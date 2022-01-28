@@ -23,7 +23,7 @@ function computerPlay()
 function game(){
     let userScore = 0;
     let computerScore = 0;
-    for(let i = 0; i<5; i++)
+    for(let i = 0; i<5; i++) // This logic only allows for a max of five rounds played
     {
        playRound(window.prompt("Please enter rock, paper, or scissors: "), computerPlay()); 
     }

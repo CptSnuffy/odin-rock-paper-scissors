@@ -1,0 +1,54 @@
+*
+{
+    border: 1px solid red;
+}
+
+body
+{
+    font-family: 'Indie Flower', cursive;
+    margin: 0;
+    padding: 0;
+    background-color: #7B6F7D;
+}
+
+.header
+{
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    background-color: #2F2630;
+}
+.headertext
+{
+    font-size: 75px;
+    color: #7B6F7D;
+}
+
+.win
+{
+    display: flex;
+    justify-content: left;
+    padding: 75px 25px  25px 75px;
+    font-size: 75px;
+    color: white;
+}
+
+.lose
+{
+    display: flex;
+    justify-content: right;
+    padding: 75px 75px 25px 25px;
+    font-size: 75px;
+    color: white;
+    margin-top: -212px;
+}
+
+.score
+{
+    display: flex;
+    justify-content: center;
+    padding: 75px 25px 25px 25px;
+    font-size: 75px;
+    color: white;
+    margin-top: -212px;
+}
