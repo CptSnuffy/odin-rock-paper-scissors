@@ -20,97 +20,89 @@ function computerPlay()
         return 'error';
     }
 }
-function game(){
+
+
+function game()
+{
     let userScore = 0;
     let computerScore = 0;
-    for(let i = 0; i<5; i++) // This logic only allows for a max of five rounds played
-    {
-       playRound(window.prompt("Please enter rock, paper, or scissors: "), computerPlay()); 
-    }
-    console.log(`${userScore} and ${computerScore}`)
+    
+    let rockClicked = false;
+    let paperClicked = false;
+    let scissorsClicked = false;
 
-    if(userScore > computerScore)
-    {
-        alert(`You won ${userScore} out of 5 games`);
-    }
-    else if (userScore < computerScore)
-    {
-        alert(`The computer won ${computerScore} out of 5 games`);
-    }
-    else if (userScore == computerScore)
-    {
-        alert('You tied!');
-    }
-    else
-    {
-        alert('Error');
-    }
+    //Assigns you win, you lose text, and you tied objects and hides them at game start.
+    let youWin = document.querySelector('.win');
+    youWin.setAttribute('style', 'visibility: hidden');
 
-    function playRound(playerSelection, computerSelection)
+    let youLose = document.querySelector('.lose');
+    youLose.setAttribute('style', 'visibility: hidden');
+
+    let youTied = document.querySelector('.tied');
+    youTied.setAttribute('style', 'visibility: hidden');
+
+    //Assigns clickable buttons
+    let rock = document.querySelector('.rock');
+    let paper = document.querySelector('.paper');
+    let scissors = document.querySelector('.scissors');
+
+    rock.onclick = () => {gameLogic('rock');};
+    paper.onclick = () => {gameLogic('paper');};
+    scissors.onclick = () => {gameLogic('scissors');};
+    function gameLogic(playerChoice)
+    {
+        computerChoice = computerPlay();
+        console.log(playerChoice);
+        console.log(computerChoice);
+        
+        //Tie scenario
+        if(playerChoice == computerChoice)
         {
-            if(playerSelection.toLowerCase() == 'rock')
-            {
-                if(computerSelection.toLowerCase() == 'scissors')
-                {
-                    return userScore+=1;
-                }
-                else if (computerSelection.toLowerCase() == 'paper')
-                {
-                    computerScore+=1;
-                    return computerScore+=1;
-                }
-                else if (computerSelection.toLowerCase() == 'rock')
-                {
-                    return null;
-                }
-                else
-                {
-                    return 'There is an issue (Please make sure you are using a correct input)';
-                }
-            }
-            else if(playerSelection.toLowerCase() == 'paper')
-            {
-                if(computerSelection.toLowerCase() == 'rock')
-                {
-                    return userScore+=1;
-
-                }
-                else if (computerSelection.toLowerCase() == 'scissors')
-                {
-                    return computerScore+=1;
-                }
-                else if (computerSelection.toLowerCase() == 'paper')
-                {
-                    return null;
-                }
-                else
-                {
-                    return 'There is an issue (Please make sure you are using a correct input)';
-                }
-            }
-
-            else if(playerSelection.toLowerCase() == 'scissors')
-            {
-                if(computerSelection.toLowerCase() == 'paper')
-                {
-                    return userScore+=1;
-                }
-                else if(computerSelection.toLowerCase() == 'rock')
-                {
-                    return computerScore+=1;
-                }
-                else if(computerSelection.toLowerCase() == 'scissors')
-                {
-                    return null;
-                }
-                else
-                {
-                    return 'There is an issue (Please make sure you are using a correct input)';
-                }
-            }
-
+            youWin.setAttribute('style', 'visibility: hidden');
+            youLose.setAttribute('style', 'visibility: hidden');
+            youTied.setAttribute('style', 'visibility: visible');
         }
 
+        //Computer win scenarios
+        else if(playerChoice == 'rock' && computerChoice == 'paper')
+        {
+            youWin.setAttribute('style', 'visibility: hidden');
+            youLose.setAttribute('style', 'visibility: visible');
+            youTied.setAttribute('style', 'visibility: hidden');
+        }
+        else if(playerChoice == 'paper' && computerChoice == 'scissors')
+        {
+            youWin.setAttribute('style', 'visibility: hidden');
+            youLose.setAttribute('style', 'visibility: visible');
+            youTied.setAttribute('style', 'visibility: hidden');
+        }
+        else if(playerChoice == 'scissors' && computerChoice == 'rock')
+        {
+            youWin.setAttribute('style', 'visibility: hidden');
+            youLose.setAttribute('style', 'visibility: visible');
+            youTied.setAttribute('style', 'visibility: hidden');
+        }
+
+        //Player win scenarios
+        else if (playerChoice == 'rock' && computerChoice == 'scissors')
+        {
+            youWin.setAttribute('style', 'visibility: visible');
+            youLose.setAttribute('style', 'visibility: hidden');
+            youTied.setAttribute('style', 'visibility: hidden');
+        }
+        else if (playerChoice == 'paper' && computerChoice == 'rock')
+        {
+            youWin.setAttribute('style', 'visibility: visible');
+            youLose.setAttribute('style', 'visibility: hidden');
+            youTied.setAttribute('style', 'visibility: hidden');
+        }
+        else if (playerChoice == 'scissors' && computerChoice == 'paper')
+        {
+            youWin.setAttribute('style', 'visibility: visible');
+            youLose.setAttribute('style', 'visibility: hidden');
+            youTied.setAttribute('style', 'visibility: hidden');
+        }
+    }
 }
 //let gameState = playRound(window.prompt("Please enter rock, paper, or scissors: "), computerPlay())
 game()
